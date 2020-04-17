@@ -1,0 +1,28 @@
+.order(@direction:row, @justify:center, @align:center) {
+
+    display: flex;
+    flex-direction: @direction;
+    justify-content: @justify;
+    align-items: @align;
+
+}
+
+.space(@padd, @marg) {
+
+    padding: @padd;
+    margin: @marg;
+
+}
+
+.defaultbutton(@bcolor:rgb(245, 245, 245), @fcolor:black) {
+
+    background-color: @bcolor;
+    color: @fcolor;
+    border: 1px solid black;
+    border-radius: 8px;
+    box-shadow: 1px 1px 5px;
+    //box-shadow: inset 0px 1px 0px 0px grey;
+    .space(8px 16px 8px 16px, 15px 0 0 0);
+
+
+}

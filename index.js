@@ -208,11 +208,14 @@ const artists = [
 (1) Name of the first artist in the array
 (2) Bio of the third artist in the array */
 
+console.log(artists[0].name);
+console.log(artists[2].bio);
 
 
 /* Task 2: There is a typo in your dataset 😱 The 9th artist, Vincent Van Gogh is currently Vincent Van Dough. Use an array method to fix this issue and console.log() to check your work. */
 
-
+artists[8].name = "Vincent Van Gogh";
+console.log(artists[8].name);
 
 /* Task 3: Create a function called `getArtistByIndex` that takes two arguments:
  *     (1) artists array
@@ -222,9 +225,17 @@ const artists = [
  * For example, if getArtistByIndex is invoked with the inventory and the number 0,
  * it will return `The artist at index 0 is Amedeo Modigliani`.
 */
-function getArtistByIndex(id, name) {
-    /* code here */
+function getArtistByIndex(arrayname, id) {
+
+  let nstr = "The artist at index " + id + " is " + arrayname[id].name + "."; //new string
+
+  return nstr;
+  
+  //return "The artist at index " + id + " is " + arrayname[id].name + ".";
+
   }
+
+console.log(getArtistByIndex(artists, 1));
   
   /**
 
@@ -237,28 +248,68 @@ function getArtistByIndex(id, name) {
  * For example, if removeArtist is invoked with the data and the number 0,
  * it will remove Amedeo Modigliani from our dataset.
 */
-function removeArtist(/*code here*/) {
-    /* code here */
+
+function removeArtist(arrayname, id) {
+  
+  arrayname.splice(id, 1);
+
+  let nstr = "Deleted data of " + arrayname[id].name + ".";//new string
+
+  return nstr;
+
   }
+
+console.log(removeArtist(artists, 0));
   
   /**
 
 
 /* Task 5: Create a function called get20s() that takes data as an argument and returns an array with names of artists who were born the 20th century (1800-1900) */
 
-function get20s(/* Code here */){
+function get20s(arrayname){
 
-    /* Code here */
+  let nar = []; //new array
+
+    for (let i = 0; i < arrayname.length; i++) {
+
+      let yearBorn = parseInt(arrayname[i].years.substring(0, 5));
+
+      if (yearBorn > 1800 && yearBorn < 1900) {
+
+        nar.push(arrayname[i].name);
+
+      }
+
+
+    }
+
+    return nar;
 
   }
+
+console.log(get20s(artists));  
 
 /* Task 6: Create a function called lotsOfArt() that takes artists as an argument and returns an array with names of artists who painted more than 100 paintings */
 
-function lotsOfArt(/* Code here */){
+function lotsOfArt(arrayname){
 
-    /* Code here */
+  let nar = []; //new array
+
+    for (let i=0; i<arrayname.length; i++) {
+
+      if (arrayname[i].paintings > 100) {
+
+        nar.push(arrayname[i].name);
+
+      }
+
+    }
+
+    return nar;
 
   }
+
+  console.log(lotsOfArt(artists));
 
 
 /* Task 7: Create a function called `addArtist` that can accept an array of information and add it to the artists array. Then, Add a 21st artist to the array (you) with custom information! 👩‍🎨👨‍🎨
@@ -270,20 +321,49 @@ genre: Web Design,
 nationality: Your Nationality Here
 bio: Add 1-2 sentences (or use lorem ipsum) "*/
 
-function addArtist(/* Code here */){
+function addArtist(arrayname){
 
-    /* Code here */
+    artists.push(arrayname)
 
   }
+
+  let addArray = [{
+    "id": 18,
+    "name": "Test name",
+    "years": "1541 - 1614",
+    "genre": "Mannerism",
+    "nationality": "Spanish,Greek",
+    "bio": "Doménikos Theotokópoulos (Greek: Δομήνικος Θεοτοκόπουλος [ðoˈminikos θeotoˈkopulos]; October 1541 –  7 April 1614), most widely known as El Greco (\"The Greek\"), was a painter, sculptor and architect of the Spanish Renaissance. \"El Greco\" was a nickname, a reference to his Greek origin, and the artist normally signed his paintings with his full birth name in Greek letters, Δομήνικος Θεοτοκόπουλος, Doménikos Theotokópoulos, often adding the word Κρής Krēs, Cretan.",
+    "wikipedia": "http://en.wikipedia.org/wiki/test_name",
+    "paintings": 87
+  }];
+
+  addArtist(addArray);
+
+  console.log(artists[artists.length - 1]);
 
 
 /* Task 8: Create a function called `checkArtist` that accepts a string (name of an artist) and checks if that artist is in the dataset. */
 
-function checkArtist(/* Code here */){
+function checkArtist(artistname, arrayname){
 
-    /* Code here */
+  let check = "";
+
+    for (let i=0; i<arrayname.length; i++) {
+
+      if (arrayname[i].name === artistname) {
+
+        check = "Yes";
+
+      }
+
+    }
+
+    return check;
 
   }
+
+  console.log(checkArtist("El Greco", artists));
 
 
 
@@ -320,11 +400,21 @@ function getHTML(/* Code here */){
 
 /* STRETCH 2: Create a function called `randomize` that takes a data array as an argument and returns a the same array in a randomized order. */
 
-function randomize(/* Code here */){
+function shuffle(arrayname0) {
+  arrayname0.sort(() => Math.random() - 0.5);
+}
 
-    /* Code here */
+function randomize(arrayname){
+
+    let nar = [...artists] //new array
+
+    shuffle(nar);
+
+    return nar;
 
   }
+
+  console.log(randomize(artists));
 
 
  /* STRETCH 3: Use advanced array methods (.map, .reduce, .filer) to refactor your MVP code (create an array of all artists born in the 1900s with .filter, for example) */

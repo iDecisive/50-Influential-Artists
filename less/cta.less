@@ -1,0 +1,41 @@
+#ctaArea {
+    
+    .order(column);
+
+    height: 600px;
+
+    @media @tablet {
+
+        width: 100%;
+
+    }
+
+    #ctaImageContainer {
+        .order(column);
+        width: 750px;
+        height: 500px;
+        background-image: url(../assets/home.png);
+        background-size: cover;
+
+        @media @tablet {
+
+            width: 100%;
+    
+        }
+
+        section {
+
+            text-align: center;
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+
+        }
+
+        a {
+            .defaultbutton(rgb(245, 245, 245),black);
+        }
+
+    }
+
+}

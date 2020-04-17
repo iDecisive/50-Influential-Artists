@@ -7,6 +7,12 @@ body {
     .order(column);
     width: 750px;
 
+    @media @tablet {
+
+        width: 100%;
+
+    }
+
 }
 
 .artists-container {
@@ -14,10 +20,23 @@ body {
     .order(row,space-evenly,flex-start);
     .space(0 0 0 0, 0 0 2% 0);
 
+    @media @tablet {
+
+        .order(column);
+
+    }
+
     div {
 
         .order(column);
         width: 50%;
+
+        @media @tablet {
+
+            width: 100%;
+            padding-bottom: 10px;
+    
+        }
 
 
         img{
@@ -25,13 +44,16 @@ body {
             height: 200px;
             width: 200px;
 
+            padding-bottom: 10px;
+
         }
 
         .bio {
 
             text-align: center;
             //width: 25%;
-            font-size: 0.7rem;
+            font-size: 0.9rem;
+            padding-top: 10px;
 
         }
 
